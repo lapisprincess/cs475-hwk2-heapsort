@@ -13,17 +13,10 @@
 void heapSort(Employee *A, int n)
 {
     buildHeap(A, n);
-
-    while (n > 0) {
-        swap(&A[n-1], &A[0]);
-        n--;
-        heapify(A, 0, n-1);
+    for (int i = n - 1; i >= 0; i--) {
+        swap(&A[i], &A[0]);
+        heapify(A, 0, i-1);
     }
-
-    // while n > 0:
-        // swap A[n-1] with A[0], since A[0] is the smallest number.
-        // A[n-1] now sorted in place, so decrement n
-        // Heapify the elements from A[0] up to A[n-1] (which leaves the newly sorted element alone)
 }
 
 
@@ -54,11 +47,11 @@ void heapify(Employee *A, int i, int n)
     int smaller = i;
     int left, right;
 
-    left = 2 * (i + 1) - 1;
-    if (left < n && A[i].salary > A[left].salary) smaller = left;
+    left = 2 * i + 1;
+    if (left < n && A[i].salary < A[left].salary) smaller = left;
 
-    right = 2 * (i + 1);
-    if (right < n && A[i].salary > A[right].salary) smaller = right;
+    right = 2 * i + 2;
+    if (right < n && A[i].salary < A[right].salary) smaller = right;
 
     if (smaller != i) {
         swap(&A[smaller], &A[i]);
