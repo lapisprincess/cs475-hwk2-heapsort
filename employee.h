@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * This file contains the definition of the Employee structure
  * @author David
@@ -7,7 +9,6 @@
 
 typedef struct Employee
 {
-	char name[MAX_NAME_LEN];	/* employee ID */
-	int salary;					/* salary */
+    char name[MAX_NAME_LEN];	/* employee ID */
+    int salary;			/* salary */
 } Employee;
-
